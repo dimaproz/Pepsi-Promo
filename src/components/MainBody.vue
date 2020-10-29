@@ -1,85 +1,114 @@
 <template>
   <div class="main-site-screen">
-
-    <!--  <img class="girl-image" src="../assets/images/main-page/girl.png" alt="girl">-->
-    <main>
-      <div class="code-block-wrapper">
-        <div class="enter-code-wrap">
-          <div class="key-form-wrap">
-            <div class="key-form">
-              <form>
-                <input type="text" maxlength="12" class="key-input" />
-                <button class="key-btn"></button>
-              </form>
-              <div class="key-red-bg"></div>
-              <div class="key-blue-bg"></div>
-              <a href=""></a>
-            </div>
-            <div class="over-key">РЕЄСТРУЙ КОД</div>
-          </div>
-          <div class="sociale">
-            <a href="#" target="_blank" class="viber">
-              <img src="../assets/images/icon-viber.svg" alt="" />
-            </a>
-            <a href="#" target="_blank" class="telegram">
-              <img src="../assets/images/icon-telegram.svg" alt="" />
-            </a>
-          </div>
-          <img class="white-line" src="../assets/images/main-page/white-line.png" alt="">
-          <img class="red-line" src="../assets/images/main-page/red-line.png" alt="">
-          <div class="get-code">
-            Як знайти код?
-          </div>
-        </div>
+<!--      <img class="girl-image" src="../assets/images/main-page/girl.png" alt="girl">-->
+      <div class="girl-image-block">
+        <picture>
+          <source
+              media="(max-width: 600px)"
+              srcset="../assets/images/main-page/girl-mob.png"
+          />
+          <source
+              media="(min-width: 992px)"
+              srcset="../assets/images/main-page/girl.png"
+          />
+          <img src="../assets/images/main-page/girl.png" alt="girl" />
+        </picture>
       </div>
-
-      <div class="gifts-wrap">
+      <code-input />
+      <div class="steps">
+        <div class="steps__item">
+          <div class="steps__name">
+            <span class="steps__number">1.</span>
+            <span class="steps__title">Купуй</span>
+            <div class="steps__images">
+              <img src="../assets/images/pepsi.png" alt="pepsi" />
+              <img src="../assets/images/7up.png" alt="7up" />
+              <img src="../assets/images/mirinda.png" alt="mirinda" />
+            </div>
+          </div>
+          <span class="steps__subtitle">акційний продукт</span>
+        </div>
+        <div class="steps__item">
+          <div class="steps__name">
+            <span class="steps__number">2.</span>
+            <span class="steps__title">Реєструй</span>
+          </div>
+          <span class="steps__subtitle">код з-під кришки</span>
+        </div>
+        <div class="steps__item">
+          <div class="steps__name">
+            <span class="steps__number">3.</span>
+            <span class="steps__title">Вигравай</span>
+          </div>
+          <span class="steps__subtitle">драйвові призи</span>
+        </div>
+        <div class="bg-lines"></div>
+      </div>
         <div class="gifts">
           <div class="gifts__item">
             <div class="img-box img-box-1">
               <img src="../assets/images/gifts/telik.png" alt="" />
             </div>
-            <span class="gifts__codes">Кожному 5-му</span>
-            <span class="gifts__title">підписка</span>
-            <img src="../assets/images/gifts/telik-text.png" alt="text">
+            <div class="gifts__descr">
+              <span class="gifts__codes">Кожному 5-му</span>
+              <span class="gifts__title">підписка</span>
+              <img class="tv-name" src="../assets/images/gifts/telik-text.png" alt="text">
+            </div>
           </div>
           <div class="gifts__item">
             <div class="img-box img-box-2">
               <img src="../assets/images/gifts/glass.png" alt="glass" />
             </div>
-            <span class="gifts__codes">5 кодів</span>
-            <span class="gifts__title">Колекційні</span>
-            <span>Склянки</span>
+            <div class="gifts__descr">
+              <span class="gifts__codes">5 кодів</span>
+              <span class="gifts__title">Колекційні</span>
+              <span>Склянки</span>
+            </div>
           </div>
           <div class="gifts__item">
             <div class="img-box img-box-3">
               <img src="../assets/images/gifts/phone.png" alt="Iphone" />
             </div>
-            <span class="gifts__codes">1 код</span>
-            <span class="gifts__title">топовий</span>
-            <span>смартфон</span>
+            <div class="gifts__descr">
+              <span class="gifts__codes">1 код</span>
+              <span class="gifts__title">топовий</span>
+              <span>смартфон</span>
+            </div>
           </div>
           <div class="gifts__item">
             <div class="img-box img-box-4">
               <img src="../assets/images/gifts/car.png" alt="car" />
             </div>
-            <span class="gifts__codes">2 коди</span>
-            <span class="gifts__title">круте</span>
-            <span>авто</span>
+            <div class="gifts__descr">
+              <span class="gifts__codes">2 коди</span>
+              <span class="gifts__title">круте</span>
+              <span>авто</span>
+            </div>
           </div>
         </div>
-      </div>
-    </main>
+
 
   </div>
 </template>
 
 <script>
+
+import CodeInput from "@/components/CodeInput";
+
 export default {
-  name: "MainBody"
+  name: "MainBody",
+  components:{
+    CodeInput
+  }
+
 }
 </script>
 
-<style scoped>
-
+<style lang="scss">
+.girl-image-block{
+  position: absolute;
+  top: 45px;
+  left: 0;
+  z-index: 0;
+}
 </style>
