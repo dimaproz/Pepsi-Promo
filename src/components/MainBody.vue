@@ -1,20 +1,27 @@
 <template>
   <div class="main-site-screen">
-<!--      <img class="girl-image" src="../assets/images/main-page/girl.png" alt="girl">-->
+<!--      <div class="girl-image-block-desk">-->
+<!--        <img class="girl-image-desk" src="../assets/images/main-page/girl.png" alt="girl">-->
+<!--      </div>-->
       <div class="girl-image-block">
         <picture>
           <source
-              media="(max-width: 600px)"
+              media="(max-width: 767px)"
               srcset="../assets/images/main-page/girl-mob.png"
           />
           <source
-              media="(min-width: 992px)"
+              media="(min-width: 768px) and (max-width: 1279px)"
+              srcset="../assets/images/main-page/girl-tablet.png"
+          />
+          <source
+              media="(min-width: 1280px)"
               srcset="../assets/images/main-page/girl.png"
           />
-          <img src="../assets/images/main-page/girl.png" alt="girl" />
+          <img src="../assets/images/main-page/girl-mob.png" alt="girl" />
         </picture>
       </div>
       <code-input />
+    <div class="steps-wrap">
       <div class="steps">
         <div class="steps__item">
           <div class="steps__name">
@@ -42,9 +49,17 @@
           </div>
           <span class="steps__subtitle">драйвові призи</span>
         </div>
-        <div class="bg-lines"></div>
+        <!--        <div class="bg-lines"></div>-->
+        <div class="triangle-left"></div>
+        <div class="triangle-right"></div>
+        <div class="triangle-right_2"></div>
+        <div class="triangle-bottom"></div>
       </div>
-        <div class="gifts">
+      <div class="steps-blue-bg"></div>
+      <div class="steps-red-bg"></div>
+    </div>
+
+      <div class="gifts">
           <div class="gifts__item">
             <div class="img-box img-box-1">
               <img src="../assets/images/gifts/telik.png" alt="" />
@@ -105,10 +120,5 @@ export default {
 </script>
 
 <style lang="scss">
-.girl-image-block{
-  position: absolute;
-  top: 45px;
-  left: 0;
-  z-index: 0;
-}
+
 </style>

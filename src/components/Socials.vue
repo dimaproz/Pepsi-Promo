@@ -15,32 +15,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
-.sociale {
-  display: flex;
-  align-items: center
-}
-
-.sociale a {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  border: 3px solid #0eb4f2;
-  background: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  &+a{
-    margin-left: 2px;
-  }
-}
-
-.sociale a img {
-  max-width: 19px
-}
+<style lang="scss">
 
 
-//.sociale.sociale-mobile {
-//  display: none
-//}
 </style>
