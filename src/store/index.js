@@ -7,7 +7,9 @@ const store = () => new Vuex.Store({
     state:{
         sidebarActive: false,
         codeInputActive: false,
-        loginModalActive: false
+        loginModalActive: false,
+        registrationModalActive: false,
+        winnersModalActive: false
     },
     getters: {
     },
@@ -20,6 +22,14 @@ const store = () => new Vuex.Store({
         },
         LOGIN_MODAL_TOGGLE(state){
             state.loginModalActive = !state.loginModalActive
+        },
+        REGISTRATION_MODAL_TOGGLE(state){
+            state.registrationModalActive = !state.registrationModalActive
+            state.sidebarActive = false
+        },
+        WINNERS_MODAL_TOGGLE(state){
+            state.winnersModalActive = !state.winnersModalActive
+            state.sidebarActive = false
         }
     },
     actions: {
@@ -31,7 +41,13 @@ const store = () => new Vuex.Store({
         },
         loginModalActive({commit}){
             commit("LOGIN_MODAL_TOGGLE")
-        }
+        },
+        registrationModalActive({commit}){
+            commit("REGISTRATION_MODAL_TOGGLE")
+        },
+        winnersModalActive({commit}){
+            commit("WINNERS_MODAL_TOGGLE")
+        },
     }
 })
 

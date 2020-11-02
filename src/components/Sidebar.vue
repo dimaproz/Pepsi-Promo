@@ -9,10 +9,10 @@
     <div class="main-menu">
       <ul>
         <li>
-          <a href="#">Реєструй код</a>
+          <a href="#" @click.prevent="$store.dispatch('registrationModalActive')">Реєструй код</a>
         </li>
         <li>
-          <a href="#">Призи/переможці</a>
+          <a href="#" @click.prevent="$store.dispatch('winnersModalActive')">Призи/переможці</a>
         </li>
         <li>
           <a href="#">Офіційні правила</a>
@@ -105,7 +105,12 @@ ul{
 .main-menu{
   font-size: 22px;
   text-transform: uppercase;
-  margin-top: 150px;
+  //margin-top: 150px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 120px 0px;
   ul{
     margin-left: 57px;
     li{
@@ -138,7 +143,6 @@ ul{
   }
   .main-menu{
     font-size: 17px;
-    margin-top: 120px;
     ul li + li{
       margin-top: 27px;
     }
@@ -162,7 +166,6 @@ ul{
   }
   .main-menu{
     font-size: 17px;
-    margin-top: 158px;
     ul{
       margin-left: 50px;
     }
@@ -171,7 +174,7 @@ ul{
 @media all and (max-width: 600px) {
   .main-menu-wrap{
     width: 100%;
-    padding: 10px 20px;
+    padding: 10px 20px 10px 40px;
     &:after{
       left: 0;
       right: 0;
@@ -194,12 +197,7 @@ ul{
   }
   .main-menu{
     font-size: 17px;
-    margin-top: 0px;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-bottom: 58px;
+    padding: 0;
     ul{
       margin-left: 0px;
     }

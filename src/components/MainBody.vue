@@ -1,8 +1,5 @@
 <template>
   <div class="main-site-screen">
-<!--      <div class="girl-image-block-desk">-->
-<!--        <img class="girl-image-desk" src="../assets/images/main-page/girl.png" alt="girl">-->
-<!--      </div>-->
       <div class="girl-image-block">
         <picture>
           <source
@@ -19,6 +16,16 @@
           />
           <img src="../assets/images/main-page/girl-mob.png" alt="girl" />
         </picture>
+        <img class="star star-1" src="../assets/images/stars/star-L-vertical.png" alt="star" />
+        <img class="star star-2" src="../assets/images/stars/star-L-vertical.png" alt="star" />
+        <img class="star star-3" src="../assets/images/stars/star-L-vertical.png" alt="star" />
+        <img class="star star-4" src="../assets/images/stars/star-M-red.png" alt="star" />
+        <img class="star star-5" src="../assets/images/stars/star-L-vertical.png" alt="star" />
+        <img class="star star-6" src="../assets/images/stars/star-L-vertical.png" alt="star" />
+        <img class="star star-7" src="../assets/images/stars/star-L-vertical.png" alt="star" />
+        <img class="star star-8" src="../assets/images/stars/star-L-vertical.png" alt="star" />
+        <img class="star star-9" src="../assets/images/stars/star-L-vertical.png" alt="star" />
+        <img class="star star-10" src="../assets/images/stars/star-L-vertical.png" alt="star" />
       </div>
       <code-input />
     <div class="steps-wrap">
@@ -49,7 +56,6 @@
           </div>
           <span class="steps__subtitle">драйвові призи</span>
         </div>
-        <!--        <div class="bg-lines"></div>-->
         <div class="triangle-left"></div>
         <div class="triangle-right"></div>
         <div class="triangle-right_2"></div>
@@ -93,6 +99,10 @@
           <div class="gifts__item">
             <div class="img-box img-box-4">
               <img src="../assets/images/gifts/car.png" alt="car" />
+              <img class="star star-1" src="../assets/images/stars/star-M-red.png" alt="star">
+              <img class="star star-2" src="../assets/images/stars/star-L-vertical.png" alt="star">
+              <img class="star star-3" src="../assets/images/stars/star-L-vertical.png" alt="star">
+              <img class="star star-4" src="../assets/images/stars/star-L-vertical.png" alt="star">
             </div>
             <div class="gifts__descr">
               <span class="gifts__codes">2 коди</span>
@@ -101,8 +111,6 @@
             </div>
           </div>
         </div>
-
-
   </div>
 </template>
 

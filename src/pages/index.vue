@@ -6,7 +6,6 @@
         <span @click="$store.dispatch('loginModalActive')">
           Вхід
         </span>
-        <login-modal/>
         <div class="menu-burger" @click="$store.dispatch('toggleSidebarState')">
           <span></span>
           <span></span>
@@ -23,6 +22,9 @@
       </div>
       <div class="triangle-top"></div>
     </footer>
+    <login-modal/>
+    <registration-modal/>
+    <winners-modal/>
   </div>
 </template>
 
@@ -30,6 +32,8 @@
 import MainBody from '../components/MainBody';
 import Sidebar from "@/components/Sidebar";
 import LoginModal from "@/components/Modals/LoginModal";
+import RegistrationModal from "@/components/Modals/RegistrationModal";
+import WinnersModal from "@/components/Modals/WinnersModal";
 
 let vh = window.innerHeight * 0.01; // Then we set the value in the --vh custom property to the root of the document
 
@@ -46,12 +50,17 @@ export default {
   components:{
     Sidebar,
     MainBody,
-    LoginModal
+    LoginModal,
+    RegistrationModal,
+    WinnersModal
   },
 }
 </script>
 
 <style lang="scss">
+body.modal-open{
+  overflow: hidden;
+}
 .wrapper {
   position: relative;
   background-color: #0266c6;
@@ -71,7 +80,7 @@ export default {
   position: absolute;
   left: 0;
   top: 0;
-  z-index: 100;
+  z-index: 9;
   padding: 20px 20px 0;
   display: flex;
   align-items: center;
@@ -217,6 +226,10 @@ export default {
 .img-box-4 {
   width: 161px;
   height: 94px;
+  .star{
+    position: absolute;
+    display: none;
+  }
 }
 .tv-name{
   width: 68px;
@@ -341,9 +354,60 @@ export default {
 
 .girl-image-block{
   position: absolute;
-  top: 45px;
+  top: 0;
   left: 0;
   z-index: 0;
+  .star-1{
+    left: 36%;
+    top: 9%;
+    width: 6%;
+  }
+  .star-2{
+    left: 66%;
+    top: 23%;
+    width: 7%;
+  }
+  .star-3{
+    left: 81%;
+    top: 36%;
+    width: 5%;
+  }
+  .star-4{
+    left: 74%;
+    top: 31%;
+    width: 5%;
+  }
+  .star-5{
+    left: 43%;
+    top: 24%;
+    width: 3%;
+  }
+  .star-6{
+    left: 47%;
+    top: 22.8%;
+    width: 3%;
+  }
+  .star-7{
+    left: 71%;
+    top: 26.5%;
+    width: 4%;
+  }
+  .star-8{
+    left: 78%;
+    top: 34.8%;
+    width: 2%;
+  }
+  .star-9{
+    left: 91%;
+    top: 34.8%;
+    width: 3.5%;
+  }
+  .star-10{
+    display: none;
+  }
+}
+.star{
+  position: absolute;
 }
 
 // code input
@@ -607,6 +671,57 @@ align-items: center
       width: 100%;
       display: block;
     }
+    .star-1{
+      left: 36%;
+      top: 13.6%;
+      width: 6%;
+    }
+    .star-2{
+      left: -3%;
+      top: 20.5%;
+      width: 8%;
+    }
+    .star-3{
+      left: 64%;
+      top: 36%;
+      width: 7.5%;
+    }
+    .star-4{
+      left: 71%;
+      top: 48.5%;
+      width: 5%;
+    }
+    .star-5{
+      left: 42%;
+      top: 37.4%;
+      width: 3%;
+    }
+    .star-6{
+      left: 46%;
+      top: 35.8%;
+      width: 2.5%;
+    }
+    .star-7{
+      left: 68.4%;
+      top: 41.7%;
+      width: 3.2%;
+    }
+    .star-8{
+      left: 76.5%;
+      top: 55.8%;
+      width: 2%;
+    }
+    .star-9{
+      left: 71%;
+      top: 60.5%;
+      width: 4.5%;
+    }
+    .star-10{
+      display: block;
+      left: 49.5%;
+      top: 33.8%;
+      width: 1.7%;
+    }
   }
 
   .main-header{
@@ -679,6 +794,24 @@ align-items: center
     padding-right: 40px;
     padding-bottom: 50px;
   }
+  .img-box-4{
+    .star{
+      display: block;
+    }
+    .star-1, .star-4{
+      display: none;
+    }
+    .star-2{
+      left: 49%;
+      top: 29%;
+      width: 8%;
+    }
+    .star-3{
+      left: 80%;
+      top: 1%;
+      width: 10%;
+    }
+  }
   .enter-code-wrap{
     margin: 15% 0 60px auto;
     max-width: 390px;
@@ -744,12 +877,66 @@ align-items: center
   .gifts{
     transform: scale(1.1);
     transform-origin: center right;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 60%;
   }
 }
 @media all and (min-width: 1280px){
   .girl-image-block{
     width: 50%;
     z-index: 3;
+    .star-1{
+      left: 40%;
+      top: 8.6%;
+      width: 6%;
+    }
+    .star-2{
+      left: 3.2%;
+      top: 18.7%;
+      width: 7.5%;
+    }
+    .star-3{
+      left: 66%;
+      top: 43%;
+      width: 7%;
+    }
+    .star-4{
+      left: 73%;
+      top: 61.5%;
+      width: 5%;
+    }
+    .star-5{
+      left: 46%;
+      top: 44.4%;
+      width: 2.7%;
+    }
+    .star-6{
+      left: 49.7%;
+      top: 42%;
+      width: 2.3%;
+    }
+    .star-7{
+      left: 70.6%;
+      top: 51.2%;
+      width: 3%;
+    }
+    .star-8{
+      left: 78.3%;
+      top: 72.3%;
+      width: 2%;
+    }
+    .star-9{
+      left: 80%;
+      top: 74.5%;
+      width: 4.5%;
+    }
+    .star-10{
+      left: 88.5%;
+      top: 73.5%;
+      width: 2.5%;
+    }
   }
   .main-header{
     padding: 39px 73px 0;
@@ -837,6 +1024,28 @@ align-items: center
     position: relative;
     left: 72px;
     top: 16px;
+    .star-1{
+      display: block;
+      left: 83%;
+      top: 106%;
+      width: 12%;
+    }
+    .star-4{
+      display: block;
+      left: 52%;
+      top: 42%;
+      width: 7%;
+    }
+    .star-2{
+      left: 55%;
+      top: 123%;
+      width: 5%;
+    }
+    .star-3{
+      left: 98%;
+      top: 100%;
+      width: 8%;
+    }
   }
   .tv-name {
     width: 74px;
@@ -973,7 +1182,7 @@ align-items: center
 }
 @media all and (min-width: 1600px){
   .girl-image-block{
-    width: 50%;
+    width: 46%;
     z-index: 3;
   }
   .gifts {
@@ -1054,41 +1263,24 @@ align-items: center
   }
 
 }
-@media all and (min-width: 768px) and (max-height: 850px) {
-  .girl-image-block{
-    top: auto;
-    width: 500px;
-    bottom: 0;
-    img{
-      width: 100%;
-    }
-  }
-}
+
 @media (max-width: 850px) and (max-height: 1090px) {
   .wrapper {
     min-height: 100vh; /* Use vh as a fallback for browsers that do not support Custom Properties */
     min-height: calc(var(--vh, 1vh) * 100);
   }
 }
-@media all and (min-width: 1280px) and (max-height: 850px){
+
+@media (min-width: 1024px) and (max-width: 1279px) and (max-height: 780px){
   .girl-image-block{
-    width: 534px;
+    width: 450px;
   }
 }
-@media all and (min-width: 1400px) and (max-height: 850px){
+@media all and (min-width: 1280px) and (max-height: 600px){
   .girl-image-block{
-    width: 640px;
+    width: 45%;
   }
 }
-@media all and (min-width: 1600px) and (max-height: 850px){
-  .girl-image-block{
-    width: 650px;
-  }
-}
-@media all and (min-width: 1820px) and (max-height: 930px){
-  .girl-image-block{
-    width: 750px;
-  }
-}
+
 
 </style>
