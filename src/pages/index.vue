@@ -3,9 +3,10 @@
     <header class="main-header main-page-header">
       <div class="menu-bg-hide" :class="{ active: $store.state.sidebarActive }" @click="$store.dispatch('toggleSidebarState')"></div>
       <div class="menu-trigger" :class="{ active: $store.state.sidebarActive }">
-        <span>
+        <span @click="$store.dispatch('loginModalActive')">
           Вхід
         </span>
+        <login-modal/>
         <div class="menu-burger" @click="$store.dispatch('toggleSidebarState')">
           <span></span>
           <span></span>
@@ -28,6 +29,7 @@
 <script>
 import MainBody from '../components/MainBody';
 import Sidebar from "@/components/Sidebar";
+import LoginModal from "@/components/Modals/LoginModal";
 
 let vh = window.innerHeight * 0.01; // Then we set the value in the --vh custom property to the root of the document
 
@@ -44,6 +46,7 @@ export default {
   components:{
     Sidebar,
     MainBody,
+    LoginModal
   },
 }
 </script>

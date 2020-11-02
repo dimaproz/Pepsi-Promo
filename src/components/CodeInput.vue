@@ -6,8 +6,6 @@
             <input type="text" maxlength="12" class="key-input" />
             <button class="key-btn"></button>
           </form>
-
-<!--          <a href=""></a>-->
         </div>
         <div class="key-red-bg"></div>
         <div class="key-blue-bg"></div>
@@ -36,14 +34,6 @@ export default {
   components: {
     Socials
   },
-  // methods:{
-  //   scrollToBottom(){
-  //     window.scrollTo({
-  //       top: 1000,
-  //       behavior: "smooth"
-  //     });
-  //   }
-  // }
 }
 </script>
 

@@ -6,7 +6,8 @@ Vue.use(Vuex)
 const store = () => new Vuex.Store({
     state:{
         sidebarActive: false,
-        codeInputActive: false
+        codeInputActive: false,
+        loginModalActive: false
     },
     getters: {
     },
@@ -16,6 +17,9 @@ const store = () => new Vuex.Store({
         },
         CODEINPUT_TOGGLE(state){
             state.codeInputActive = !state.codeInputActive
+        },
+        LOGIN_MODAL_TOGGLE(state){
+            state.loginModalActive = !state.loginModalActive
         }
     },
     actions: {
@@ -25,6 +29,9 @@ const store = () => new Vuex.Store({
         toggleCodeInputState({commit}){
             commit("CODEINPUT_TOGGLE")
         },
+        loginModalActive({commit}){
+            commit("LOGIN_MODAL_TOGGLE")
+        }
     }
 })
 
