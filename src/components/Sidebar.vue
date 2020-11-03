@@ -9,10 +9,10 @@
     <div class="main-menu">
       <ul>
         <li>
-          <a href="#" @click.prevent="$store.dispatch('registrationModalActive')">Реєструй код</a>
+          <a href="#"  @click="setModal('registration')">Реєструй код</a>
         </li>
         <li>
-          <a href="#" @click.prevent="$store.dispatch('winnersModalActive')">Призи/переможці</a>
+          <a href="#"  @click="setModal('winners')">Призи/переможці</a>
         </li>
         <li>
           <a href="#">Офіційні правила</a>
@@ -32,9 +32,15 @@
 </template>
 
 <script>
+import {mapActions} from "vuex"
 
 export default {
   name: "Sidebar",
+  methods: {
+    ...mapActions({
+      setModal: 'setModal',
+    })
+  }
 }
 </script>
 

@@ -3,7 +3,7 @@
     <header class="main-header main-page-header">
       <div class="menu-bg-hide" :class="{ active: $store.state.sidebarActive }" @click="$store.dispatch('toggleSidebarState')"></div>
       <div class="menu-trigger" :class="{ active: $store.state.sidebarActive }">
-        <span @click="$store.dispatch('loginModalActive')">
+        <span @click="setModal('login')">
           Вхід
         </span>
         <div class="menu-burger" @click="$store.dispatch('toggleSidebarState')">
@@ -22,18 +22,15 @@
       </div>
       <div class="triangle-top"></div>
     </footer>
-    <login-modal/>
-    <registration-modal/>
-    <winners-modal/>
+    <modals :modal="modal"/>
   </div>
 </template>
 
 <script>
 import MainBody from '../components/MainBody';
 import Sidebar from "@/components/Sidebar";
-import LoginModal from "@/components/Modals/LoginModal";
-import RegistrationModal from "@/components/Modals/RegistrationModal";
-import WinnersModal from "@/components/Modals/WinnersModal";
+import Modals from "@/components/Modals"
+import { mapActions, mapGetters } from "vuex"
 
 let vh = window.innerHeight * 0.01; // Then we set the value in the --vh custom property to the root of the document
 
@@ -50,9 +47,17 @@ export default {
   components:{
     Sidebar,
     MainBody,
-    LoginModal,
-    RegistrationModal,
-    WinnersModal
+    Modals
+  },
+  computed:{
+    ...mapGetters({
+      modal: 'getModal',
+    }),
+  },
+  methods: {
+    ...mapActions({
+      setModal: 'setModal',
+    }),
   },
 }
 </script>
@@ -205,8 +210,12 @@ body.modal-open{
   text-transform: none;
   margin-left: -18px
 }
+.glass-star{
+  font-size: 13px;
+}
 .img-box{
   margin-bottom: 8px;
+  position: relative;
 }
 .img-box img{
   width: 100%;
@@ -214,10 +223,22 @@ body.modal-open{
 .img-box-1 {
   width: 92px;
   height: 81px;
+  .star-4{
+    position: absolute;
+    left: 100%;
+    top: 42%;
+    width: 11%;
+  }
 }
 .img-box-2 {
   width: 108px;
   height: 84px;
+  .star-3{
+    position: absolute;
+    left: 48%;
+    top: 97%;
+    width: 8%;
+  }
 }
 .img-box-3 {
   width: 110px;
@@ -229,6 +250,12 @@ body.modal-open{
   .star{
     position: absolute;
     display: none;
+  }
+  .star-2{
+    display: block;
+    left: 50%;
+    top: 40%;
+    width: 9%;
   }
 }
 .tv-name{
@@ -665,7 +692,7 @@ align-items: center
 
   .girl-image-block{
     top: auto;
-    width: 530px;
+    width: 533px;
     bottom: 0;
     img{
       width: 100%;
@@ -784,8 +811,8 @@ align-items: center
   }
 
   .steps-red-bg{
-    transform: rotate(-3deg);
-    top: 6px;
+    transform: rotate(-2.8deg);
+    top: 5px;
   }
   .gifts{
     width: 45%;
@@ -803,7 +830,7 @@ align-items: center
     }
     .star-2{
       left: 49%;
-      top: 29%;
+      top: 43%;
       width: 8%;
     }
     .star-3{
@@ -939,7 +966,7 @@ align-items: center
     }
   }
   .main-header{
-    padding: 39px 73px 0;
+    padding: 55px 110px 0;
   }
   .key-input{
     height: 90%;
@@ -1005,6 +1032,9 @@ align-items: center
       font-size: 10.66px;
     }
   }
+  .glass-star{
+    font-size: 14px;
+  }
   .img-box-1 {
     width: 78px;
     height: 63px;
@@ -1026,24 +1056,24 @@ align-items: center
     top: 16px;
     .star-1{
       display: block;
-      left: 83%;
-      top: 106%;
+      left: 85%;
+      top: 105%;
       width: 12%;
     }
     .star-4{
       display: block;
       left: 52%;
-      top: 42%;
+      top: 41%;
       width: 7%;
     }
     .star-2{
-      left: 55%;
-      top: 123%;
+      left: 57%;
+      top: 122%;
       width: 5%;
     }
     .star-3{
-      left: 98%;
-      top: 100%;
+      left: 101%;
+      top: 98%;
       width: 8%;
     }
   }
@@ -1154,6 +1184,11 @@ align-items: center
     &__codes{
       font-size: 17px;
     }
+  }
+  .glass-star{
+    font-size: 18px;
+    position: relative;
+    top: -4px;
   }
   .tv-name {
     width: 118px;

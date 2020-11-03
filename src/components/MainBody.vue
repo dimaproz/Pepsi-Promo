@@ -69,6 +69,7 @@
           <div class="gifts__item">
             <div class="img-box img-box-1">
               <img src="../assets/images/gifts/telik.png" alt="" />
+              <img class="star star-4" src="../assets/images/stars/star-L-vertical.png" alt="star">
             </div>
             <div class="gifts__descr">
               <span class="gifts__codes">Кожному 5-му</span>
@@ -79,11 +80,12 @@
           <div class="gifts__item">
             <div class="img-box img-box-2">
               <img src="../assets/images/gifts/glass.png" alt="glass" />
+              <img class="star star-3" src="../assets/images/stars/star-L-vertical.png" alt="star">
             </div>
             <div class="gifts__descr">
               <span class="gifts__codes">5 кодів</span>
               <span class="gifts__title">Колекційні</span>
-              <span>Склянки</span>
+              <span>Склянки<i class="glass-star">*</i></span>
             </div>
           </div>
           <div class="gifts__item">

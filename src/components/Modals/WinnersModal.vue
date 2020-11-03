@@ -1,10 +1,9 @@
 <template>
-  <transition name="fade-in-down">
-    <div class="modal-wrap" v-if="$store.state.winnersModalActive" >
+    <div class="modal-wrap" id="winners">
       <div class="modal-centered">
         <div class="modal-block">
           <div class="modal-content">
-            <button type="button" class="close"  @click="$store.dispatch('winnersModalActive')"></button>
+            <button type="button" class="close" @click="$emit('close')"></button>
             <div class="modal-header">
               <h2>
                 ПРИЗИ ТА ПЕРЕМОЖЦІ
@@ -50,7 +49,6 @@
         </div>
       </div>
     </div>
-  </transition>
 </template>
 
 <script>
