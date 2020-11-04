@@ -23,6 +23,7 @@
       <div class="triangle-top"></div>
     </footer>
     <modals :modal="modal"/>
+    <info-modals :info-modal="info" />
   </div>
 </template>
 
@@ -30,6 +31,7 @@
 import MainBody from '../components/MainBody';
 import Sidebar from "@/components/Sidebar";
 import Modals from "@/components/Modals"
+import InfoModals from "@/components/InfoModals"
 import { mapActions, mapGetters } from "vuex"
 
 let vh = window.innerHeight * 0.01; // Then we set the value in the --vh custom property to the root of the document
@@ -47,11 +49,13 @@ export default {
   components:{
     Sidebar,
     MainBody,
-    Modals
+    Modals,
+    InfoModals
   },
   computed:{
     ...mapGetters({
       modal: 'getModal',
+      info: 'getInfo'
     }),
   },
   methods: {
@@ -1231,17 +1235,7 @@ align-items: center
     height: 5px;
     margin-bottom: 3px;
   }
-  .sociale a{
-    width: 70px;
-    height: 70px;
-    border: 5px solid #0eb4f2;
-    img{
-      max-width: 38px;
-    }
-    &+a{
-      margin-left: 5px;
-    }
-  }
+
   .text{
     font-size: 11.5px;
   }
@@ -1253,6 +1247,17 @@ align-items: center
 
   .key-form-wrap{
     transform: none;
+  }
+  .sociale a{
+    width: 70px;
+    height: 70px;
+    border: 5px solid #0eb4f2;
+    img{
+      max-width: 38px;
+    }
+    &+a{
+      margin-left: 5px;
+    }
   }
   .enter-code-wrap {
     max-width: 650px;

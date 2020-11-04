@@ -4,7 +4,7 @@
         <div class="key-form">
           <form>
             <input type="text" maxlength="12" class="key-input" />
-            <button class="key-btn"></button>
+            <button type="submit" class="key-btn" @click.prevent="$store.dispatch('setInfoModal', 'success_show')"></button>
           </form>
         </div>
         <div class="key-red-bg"></div>

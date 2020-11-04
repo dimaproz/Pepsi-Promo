@@ -1,7 +1,7 @@
 <template>
   <nav id="nav" class="main-menu-wrap" :class="{ active: $store.state.sidebarActive }" >
     <div class="main-menu-head">
-      <button>Приватний кабінет</button>
+      <button type="button" @click.prevent="setModal('myaccount')">Приватний кабінет</button>
       <button class="burger" @click="$store.dispatch('toggleSidebarState')">
         ×
       </button>
@@ -9,19 +9,19 @@
     <div class="main-menu">
       <ul>
         <li>
-          <a href="#"  @click="setModal('registration')">Реєструй код</a>
+          <a href="#"  @click.prevent="setModal('registration')">Реєструй код</a>
         </li>
         <li>
-          <a href="#"  @click="setModal('winners')">Призи/переможці</a>
+          <a href="#"  @click.prevent="setModal('winners')">Призи/переможці</a>
         </li>
         <li>
-          <a href="#">Офіційні правила</a>
+          <a href="#" @click.prevent="setModal('rules')">Офіційні правила</a>
         </li>
         <li>
           <a href="#">Запитання та відповіді</a>
         </li>
         <li>
-          <a href="#">Колекційні склянки</a>
+          <a href="#" @click.prevent="setModal('glass')">Колекційні склянки</a>
         </li>
         <li>
           <a href="#">Вихід</a>

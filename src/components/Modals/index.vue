@@ -12,6 +12,18 @@
           v-if="modal === 'winners'"
           @close="$store.commit('MODAL_SET', null)"
       />
+      <rules-modal
+          v-if="modal === 'rules'"
+          @close="$store.commit('MODAL_SET', null)"
+      />
+      <user-cabinet-modal
+          v-if="modal === 'myaccount'"
+          @close="$store.commit('MODAL_SET', null)"
+      />
+      <glass-modal
+          v-if="modal === 'glass'"
+          @close="$store.commit('MODAL_SET', null)"
+      />
     </transition>
 </template>
 
@@ -19,13 +31,19 @@
 import LoginModal from "@/components/Modals/LoginModal";
 import RegistrationModal from "@/components/Modals/RegistrationModal";
 import WinnersModal from "@/components/Modals/WinnersModal";
+import RulesModal from "@/components/Modals/RulesModal";
+import UserCabinetModal from "@/components/Modals/UserCabinetModal";
+import GlassModal from "@/components/Modals/GlassModal";
 
 export default {
   name: "index",
   components: {
     LoginModal,
     RegistrationModal,
-    WinnersModal
+    WinnersModal,
+    RulesModal,
+    UserCabinetModal,
+    GlassModal
   },
   props: {
     modal: {
@@ -59,6 +77,14 @@ export default {
   overflow-x: hidden;
   z-index: 10;
   color: #0266c6;
+}
+.info-modal{
+  .modal-body{
+    text-align: center;
+  }
+  .modal-content{
+    padding: 35px 37px 40px;
+  }
 }
 .modal-centered{
   display: flex;
@@ -100,15 +126,14 @@ export default {
   padding: 35px 35px 60px;
   z-index: 3;
   position: relative;
+  h2{
+    font-size: 25px;
+    text-transform: uppercase;
+  }
 }
 .modal-header{
   color: #0266c6;
   text-align: center;
-  h2{
-    font-size: 25px;
-    margin: 0;
-    text-transform: uppercase;
-  }
 }
 .modal-subtitle{
   font-size: 20px;
@@ -116,20 +141,242 @@ export default {
   max-width: 235px;
   margin: 20px auto 50px;
 }
+.modal-body{
+  p{
+    font-size: 20px;
+    font-weight: normal;
+    //margin: 0;
+  }
+  a{
+    color: #0266c6;
+    border-bottom: 1px solid #0266c6;
+  }
+} 
+.uppercase{
+  text-transform: uppercase;
+}
+.font-35{
+  font-size: 35px;
+}
+.color-red{
+  color: #ff0000;
+}
+.color-light-blue{
+  color: #00aeef;
+}
+.font-light{
+  font-family: "Futura New Book";
+}
+.align-left{
+  text-align: left;
+}
 .modal-list{
-  max-height: 428px;
+  height: 400px;
   overflow-y: auto;
   font-family: "Futura New Book";
   font-weight: normal;
   font-size: 20px;
-  max-width: 365px;
-  margin: 0px 10px  0 auto;
   p{
     margin: 0;
   }
 }
 .winners-list{
   height: 428px;
+  max-width: 365px;
+  margin: 0px 10px  0 auto;
+}
+
+.codes-list{
+  font-family: "Futura New";
+  height: 410px;
+  &__item{
+    display: flex;
+    flex-wrap: wrap;
+    padding-right: 40px;
+    &+&{
+      margin-top: 13px;
+    }
+    &:first-child{
+      padding-top: 10px;
+    }
+    &_main-info{
+      display: flex;
+      span:after{
+        content: "-";
+        display: inline-block;
+        margin-left: 5px;
+      }
+    }
+    &_status{
+      display: flex;
+    }
+  }
+  span{
+    padding-left: 5px;
+    &:last-child{
+      flex: 1;
+    }
+  }
+}
+.rules-list{
+  font-size: 16px;
+  .rules{
+    padding-right: 45px;
+  }
+  .rules li {
+    font-family: "Futura New Book";
+  }
+  .rules > li {
+    font-weight: bolder;
+    margin-bottom: 10px;
+  }
+  .rules > li ul {
+    margin: 10px 0 15px 25px;
+    font-weight: normal;
+  }
+  .rules a {
+    text-decoration: underline;
+    color: #0266c6;
+  }
+  .rules a:hover {
+    color: rgba(#0266c6, 0.8);
+  }
+}
+.rules-wrap .modal-centered{
+  max-width: 700px;
+}
+.glass-modal-wrap{
+  .modal-centered{
+    max-width: 1640px;
+  }
+}
+.glass-form{
+  display: grid;
+  grid-template-columns: 35% 35% 30%;
+  grid-column-gap: 50px;
+  justify-content: space-between;
+}
+.glass-step{
+  &__head{
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    margin-bottom: 35px;
+  }
+  &:nth-child(2){
+    .glass-step__head{
+      justify-content: center;
+    }
+  }
+  &:first-child{
+    .glass-step__body{
+      margin-top: 75px;
+    }
+  }
+  &:last-child{
+    .glass-step__body{
+      display: flex;
+      align-items: flex-end;
+      height: 100%;
+      padding-bottom: 150px;
+    }
+  }
+  &__number{
+    position: relative;
+    margin-right: 5px;
+    span{
+      font-size: 63px;
+      &:first-child{
+        font-size: 34px;
+      }
+    }
+    .triangle{
+      width: 100%;
+      height: 0;
+      border-bottom: 20px solid transparent;
+      border-left: 120px solid #00aeef;
+      transform: skewX(-10deg);
+    }
+  }
+  &__descr{
+    font-size: 25px;
+    span {
+        display: block;
+    }
+  }
+}
+.glass-select{
+  display: flex;
+  justify-content: space-between;
+  &__item{
+    p{
+      font-size: 13px;
+      text-transform: uppercase;
+      font-weight: 800;
+      max-width: 84px;
+      margin-bottom: 15px;
+    }
+  }
+  &__image{
+    margin-bottom: 15px;
+  }
+  input[type=radio] + label{
+    padding: 0;
+  }
+  input[type=radio] + label:before{
+    background: #fff;
+    border: 5px solid #00aeef;
+    border-radius: 0;
+    width: 42px;
+    height: 42px;
+    transform: skewX(-7deg);
+    position: relative;
+    top: 0;
+    left: 0;
+    display: inline-block;
+  }
+  input[type=radio] + label:after{
+    background: url("../../assets/images/glass/select.png") center center no-repeat;
+    background-size: contain;
+    height: 49px;
+    width: 37px;
+    transform: none;
+    left: 12px;
+    top: -5px;
+  }
+}
+.account-wrap .modal-centered{
+  max-width: 1105px;
+  padding: 0 15px;
+}
+.account-wrap .modal-content{
+  padding: 35px 30px 70px 60px;
+}
+.account-wrap .modal-header h2{
+  position: relative;
+  &:before{
+    content: "";
+    display: inline-block;
+    width: 170px;
+    height: 18px;
+    position: absolute;
+    left: 0;
+    bottom: -28px;
+    background: url('../../assets/images/main-page/blue-line.png') center center no-repeat;
+  }
+}
+.account-wrap .modal-body h2{
+  position: relative;
+  &:before{
+    content: "";
+    display: inline-block;
+    width: 278px;
+    height: 12px;
+    position: absolute;
+    left: 180px;
+    bottom: -17px;
+    background: url('../../assets/images/main-page/red-line-account.png') center center no-repeat;
+  }
 }
 .input-wrap{
   border-bottom: 2px solid #00aeef;
@@ -307,6 +554,37 @@ input[type=checkbox]:checked+label:after, input[type=radio]:checked+label:after{
     position: relative;
     z-index: 3;
   }
+  &.small-btn{
+    height: 20px;
+    min-width: 195px;
+    font-size: 17px;
+    line-height: 20px;
+    margin-left: 25px;
+    &:before{
+      transform: rotate(-0.8deg) skewX(-10deg);
+      left: -3px;
+      top: -2px;
+    }
+    &:after{
+      transform: rotate(0.8deg) skewX(-10deg);
+      left: 3px;
+      top: 3px;
+    }
+    span{
+      transform: skewX(-10deg);
+    }
+  }
+  &.skew-btn{
+    &:before{
+      transform: rotate(-0.8deg) skewX(-10deg);
+    }
+    &:after{
+      transform: rotate(0.8deg) skewX(-10deg);
+    }
+    span{
+      transform: skewX(-10deg);
+    }
+  }
 }
 .dark-btn{
   span{
@@ -343,6 +621,7 @@ input[type=checkbox]:checked+label:after, input[type=radio]:checked+label:after{
     z-index: 2;
   }
 }
+
 .light-btn{
   span{
     background-color: #00aeef;
@@ -422,11 +701,18 @@ input[type=checkbox]:checked+label:after, input[type=radio]:checked+label:after{
     transform: rotate(-45deg);
   }
 }
+
 .mb20{
   margin-bottom: 20px;
 }
+.mb30{
+  margin-bottom: 30px;
+}
 .mb40{
   margin-bottom: 40px;
+}
+.mb60{
+  margin-bottom: 60px;
 }
 .mb70{
   margin-bottom: 70px;
@@ -439,7 +725,12 @@ input[type=checkbox]:checked+label:after, input[type=radio]:checked+label:after{
   .modal-content{
     padding: 30px 30px 45px;
   }
-  .modal-header h2{
+  .info-modal{
+    .modal-content{
+      padding: 30px 37px 40px;
+    }
+  }
+  .modal-content h2{
     font-size: 22px;
   }
   .modal-subtitle {
@@ -451,11 +742,20 @@ input[type=checkbox]:checked+label:after, input[type=radio]:checked+label:after{
   .winners-list{
     height: 358px;
   }
+  .codes-list{
+    height: 310px;
+  }
   .mb95{
     margin-bottom: 70px;
   }
   .mb70{
     margin-bottom: 50px;
+  }
+  .mb60{
+    margin-bottom: 45px;
+  }
+  .mb40{
+    margin-bottom: 30px;
   }
   label{
     font-size: 18px;
@@ -477,6 +777,11 @@ input[type=checkbox]:checked+label:after, input[type=radio]:checked+label:after{
   .modal-centered{
     max-width: 450px;
   }
+  .info-modal{
+    .modal-centered{
+      max-width: 500px;
+    }
+  }
   .modal-footer{
     margin-top: 30px;
   }
@@ -484,9 +789,53 @@ input[type=checkbox]:checked+label:after, input[type=radio]:checked+label:after{
     font-size: 18px;
   }
 }
+@media all  and (max-width: 900px) {
+  .codes-list{
+    font-size: 15px;
+  }
+  .modal-btn.small-btn{
+    height: 18px;
+    min-width: 160px;
+    font-size: 13px;
+    line-height: 18px;
+    margin-left: 25px;
+  }
+  .account-wrap .modal-content{
+    padding: 30px 25px 40px 25px;
+  }
+  .account-wrap .modal-centered {
+    max-width: 810px;
+  }
+  .account-wrap .modal-header h2:before {
+    width: 119px;
+    bottom: -21px;
+    background-size: contain;
+  }
+  .account-wrap .modal-body h2:before {
+    width: 210px;
+    left: 160px;
+    bottom: -14px;
+    background-size: contain;
+  }
+  .mb60{
+    margin-bottom: 30px;
+  }
+  .account-info p{
+    font-size: 16px;
+  }
+  .account-wrap .modal-content h2{
+    font-size: 20px;
+  }
+}
 @media all  and (max-width: 550px){
   .modal-centered{
     max-width: 300px;
+  }
+
+  .info-modal{
+    .modal-content{
+      padding: 30px 15px 20px;
+    }
   }
   .close{
     right: 0px;
@@ -496,7 +845,7 @@ input[type=checkbox]:checked+label:after, input[type=radio]:checked+label:after{
     width: 20px;
     height: 3px;
   }
-  .modal-header h2 {
+  .modal-content h2 {
     font-size: 20px;
   }
   .modal-subtitle{
@@ -521,6 +870,12 @@ input[type=checkbox]:checked+label:after, input[type=radio]:checked+label:after{
   .mb20{
     margin-bottom: 10px;
   }
+  .mb30{
+    margin-bottom: 15px;
+  }
+  .font-35{
+    font-size: 25px;
+  }
   .modal-content {
     padding: 20px 15px 25px;
   }
@@ -542,6 +897,10 @@ input[type=checkbox]:checked+label:after, input[type=radio]:checked+label:after{
   }
   .modal-text{
     font-size: 14px;
+  }
+  .modal-body p {
+    font-size: 14px;
+    font-weight: normal;
   }
 }
 </style>

@@ -58,7 +58,8 @@ h2 {
     font-size: 1.75em;
     font-weight: 700;
     line-height: 120%;
-    margin: .5em 0
+    /*margin: .5em 0*/
+    margin: 0;
 }
 
 h3 {
@@ -103,14 +104,9 @@ body {
     margin: 0;
     overflow-x: hidden
 }
-
-p {
-    margin: 1em 0
+p{
+    margin: 0;
 }
-
-/*ol, ul {*/
-/*    margin: 1em 0*/
-/*}*/
 
 button {
     padding: 0;

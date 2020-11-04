@@ -78,7 +78,7 @@
                       id="rules"
                       v-model="$v.form.rules.$model"
                   />
-                  <label for="rules">Я погоджуюсь з <a href="#">Офіційними правилами</a> та даю згоду на обробку персональних </label>
+                  <label for="rules">Я погоджуюсь з <a href="#" @click.prevent="$store.dispatch('setInfoModal', 'rules')">Офіційними правилами</a> та даю згоду на обробку персональних </label>
                   <span v-if="!$v.form.rules.sameAs" class="field-error modified">
                     Погодьтесь з Офіційними правилами
                   </span>
