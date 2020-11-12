@@ -1,0 +1,313 @@
+@charset "UTF-8";
+/*@font-face {*/
+/*    font-family: "Futura New Book";*/
+/*    src: url(../fonts/FuturaNewBook-Obl.woff2);*/
+/*    src: local("Futura New Book Obl"), local("FuturaNewBook-Obl"), url(../fonts/FuturaNewBook-Obl.eot?#iefix) format("embedded-opentype"), url(../fonts/FuturaNewBook-Obl.woff2) format("woff2"), url(../fonts/FuturaNewBook-Obl.woff) format("woff"), url(../fonts/FuturaNewBold-Obl.ttf) format("truetype");*/
+/*    font-weight: 400;*/
+/*    font-style: italic*/
+/*}*/
+
+/*@font-face {*/
+/*    font-family: "Futura";*/
+/*    src: url(../fonts/FuturaNewExtraBold-Obl.eot?#iefix) format("embedded-opentype"), url(../fonts/FuturaNewExtraBold-Obl.woff2) format("woff2"), url(../fonts/FuturaNewExtraBold-Obl.woff) format("woff"), url(../fonts/FuturaNewExtraBold-Obl.ttf) format("truetype");*/
+/*    font-weight: 800;*/
+/*    font-style: italic*/
+/*}*/
+
+/*@font-face {*/
+/*    font-family: "Futura";*/
+/*    src: url(../fonts/FuturaNewBold-Obl.eot?#iefix) format("embedded-opentype"), url(../fonts/FuturaNewBold-Obl.woff2) format("woff2"), url(../fonts/FuturaNewBold-Obl.woff) format("woff"), url(../fonts/FuturaNewBold-Obl.ttf) format("truetype");*/
+/*    font-weight: 400;*/
+/*    font-style: italic*/
+/*}*/
+
+@font-face {
+    font-family: "Proxima Nova Condensed";
+    src: local("Proxima Nova Condensed #000 Italic"), local("Proxima-Nova-Condensed-Black-Italic"), url(../fonts/ProximaNovaCond-BlackIt.woff2) format("woff2"), url(../fonts/ProximaNovaCond-BlackIt.woff) format("woff"), url(../fonts/ProximaNovaCond-BlackIt.ttf) format("truetype");
+    font-weight: 900;
+    font-style: italic;
+}
+
+@font-face {
+  font-family: 'Futura';
+  src: url('../fonts/FuturaNewExtraBold-Obl.woff2');
+  src: url('../fonts/FuturaNewExtraBold-Obl.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/FuturaNewExtraBold-Obl.woff2') format('woff2'),
+  url('../fonts/FuturaNewExtraBold-Obl.woff') format('woff'),
+  url('../fonts/FuturaNewExtraBold-Obl.ttf') format('truetype'),
+  url('../fonts/FuturaNewExtraBold-Obl.svg#FuturaNewExtraBold-Obl') format('svg');
+  font-weight: 800;
+  font-style: italic;
+}
+
+
+
+@font-face {
+  font-family: 'Futura New Bold';
+  src: url('../fonts/FuturaNewBold-Obl.eot');
+  src: url('../fonts/FuturaNewBold-Obl.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/FuturaNewBold-Obl.woff2') format('woff2'),
+  url('../fonts/FuturaNewBold-Obl.woff') format('woff'),
+  url('../fonts/FuturaNewBold-Obl.ttf') format('truetype'),
+  url('../fonts/FuturaNewBold-Obl.svg#FuturaNewBold-Obl') format('svg');
+  font-weight: bold;
+  font-style: italic;
+}
+
+
+
+@font-face {
+  font-family: 'Futura New Book';
+  src: url('../fonts/FuturaNewBook-Obl.eot');
+  src: url('../fonts/FuturaNewBook-Obl.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/FuturaNewBook-Obl.woff2') format('woff2'),
+  url('../fonts/FuturaNewBook-Obl.woff') format('woff'),
+  url('../fonts/FuturaNewBook-Obl.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Futura New Light';
+  src: url('../fonts/FuturaNewLight-Obl.eot');
+  src: url('../fonts/FuturaNewLight-Obl.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/FuturaNewLight-Obl.woff2') format('woff2'),
+  url('../fonts/FuturaNewLight-Obl.woff') format('woff'),
+  url('../fonts/FuturaNewLight-Obl.ttf') format('truetype'),
+  url('../fonts/FuturaNewLight-Obl.svg#FuturaNewLight-Obl') format('svg');
+  font-weight: 300;
+  font-style: italic;
+}
+
+
+
+
+* {
+    box-sizing: border-box
+}
+
+*, :active, :focus {
+    outline: 0 !important
+}
+
+h1 {
+    font-size: 2em;
+    font-weight: 700;
+    line-height: 120%;
+    margin: 0 0 .5em 0
+}
+
+h1 {
+    font-size: 2em;
+    font-weight: 700;
+    line-height: 120%;
+    margin: .5em 0
+}
+
+h2 {
+    font-size: 1.75em;
+    font-weight: 700;
+    line-height: 120%;
+    /*margin: .5em 0*/
+    margin: 0;
+}
+
+h3 {
+    font-size: 1.5em;
+    font-weight: 700;
+    line-height: 120%;
+    margin: .6em 0
+}
+
+h4 {
+    font-size: 1.25em;
+    font-weight: 700;
+    line-height: 120%;
+    margin: .8em 0
+}
+
+h5 {
+    font-size: 1.1em;
+    font-weight: 700;
+    line-height: 120%;
+    margin: 1em 0
+}
+
+h6 {
+    font-size: 1em;
+    font-weight: 700;
+    line-height: 120%;
+    margin: 1em 0
+}
+
+body, html {
+    height: 100%
+}
+
+body {
+    background: #fff;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.2;
+    min-width: 320px;
+    margin: 0;
+    overflow-x: hidden
+}
+p{
+    margin: 0;
+}
+
+button {
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  font-family: 'Futura New Bold';
+}
+
+.site-holder {
+  overflow: hidden
+}
+
+.wrap {
+    max-width: 1410px;
+    margin: 0 auto;
+    padding: 0 15px
+}
+
+a {
+    text-decoration: none
+}
+
+body {
+    font-family: "Futura";
+    font-weight: 600;
+    font-style: italic;
+    position: relative
+}
+
+a {
+    color: #fff
+}
+
+
+
+.star-1 {
+    animation: glitter 4.5s linear 0s infinite normal;
+    -webkit-animation: glitter 4.5s linear 0s infinite normal;
+    -moz-animation: glitter 4.5s linear 0s infinite normal;
+    -ms-animation: glitter 4.5s linear 0s infinite normal;
+    -o-animation: glitter 4.5s linear 0s infinite normal;
+}
+.star-2 {
+    animation: glitter_2 4.5s linear 0s infinite normal;
+    -webkit-animation: glitter_2 4.5s linear 0s infinite normal;
+    -moz-animation: glitter_2 4.5s linear 0s infinite normal;
+    -ms-animation: glitter_2 4.5s linear 0s infinite normal;
+    -o-animation: glitter_2 4.5s linear 0s infinite normal;
+}
+.star-3 {
+    animation: glitter_2 4.5s linear 0s infinite normal;
+    -webkit-animation: glitter_2 4.5s linear 0s infinite normal;
+    -moz-animation: glitter_2 4.5s linear 0s infinite normal;
+    -ms-animation: glitter_2 4.5s linear 0s infinite normal;
+    -o-animation: glitter_2 4.5s linear 0s infinite normal;
+    animation-delay: 0.3s;
+}
+.star-4 {
+    animation: glitter_2 4.5s linear 0s infinite normal;
+    -webkit-animation: glitter_2 4.5s linear 0s infinite normal;
+    -moz-animation: glitter_2 4.5s linear 0s infinite normal;
+    -ms-animation: glitter_2 4.5s linear 0s infinite normal;
+    -o-animation: glitter_2 4.5s linear 0s infinite normal;
+    animation-delay: 0.5s;
+}
+.star-5 {
+    animation: glitter_2 4.5s linear 0s infinite normal;
+    -webkit-animation: glitter_2 4.5s linear 0s infinite normal;
+    -moz-animation: glitter_2 4.5s linear 0s infinite normal;
+    -ms-animation: glitter_2 4.5s linear 0s infinite normal;
+    -o-animation: glitter_2 4.5s linear 0s infinite normal;
+    animation-delay: 0.3s;
+}
+.star-6 {
+    animation: glitter 4.5s linear 0s infinite normal;
+    -webkit-animation: glitter 4.5s linear 0s infinite normal;
+    -moz-animation: glitter 4.5s linear 0s infinite normal;
+    -ms-animation: glitter 4.5s linear 0s infinite normal;
+    -o-animation: glitter 4.5s linear 0s infinite normal;
+    animation-delay: 0.1s;
+}
+.star-7 {
+    animation: glitter 4.5s linear 0s infinite normal;
+    -webkit-animation: glitter 4.5s linear 0s infinite normal;
+    -moz-animation: glitter 4.5s linear 0s infinite normal;
+    -ms-animation: glitter 4.5s linear 0s infinite normal;
+    -o-animation: glitter 4.5s linear 0s infinite normal;
+    animation-delay: 0.2s;
+}
+.star-8 {
+    animation: glitter_2 4.5s linear 0s infinite normal;
+    -webkit-animation: glitter_2 4.5s linear 0s infinite normal;
+    -moz-animation: glitter_2 4.5s linear 0s infinite normal;
+    -ms-animation: glitter_2 4.5s linear 0s infinite normal;
+    -o-animation: glitter_2 4.5s linear 0s infinite normal;
+    animation-delay: 0.2s;
+}
+.star-9 {
+    animation: glitter 4.5s linear 0s infinite normal;
+    -webkit-animation: glitter 4.5s linear 0s infinite normal;
+    -moz-animation: glitter 4.5s linear 0s infinite normal;
+    -ms-animation: glitter 4.5s linear 0s infinite normal;
+    -o-animation: glitter 4.5s linear 0s infinite normal;
+    animation-delay: 0.5s;
+}
+.star-10 {
+    animation: glitter_2 4.5s linear 0s infinite normal;
+    -webkit-animation: glitter_2 4.5s linear 0s infinite normal;
+    -moz-animation: glitter_2 4.5s linear 0s infinite normal;
+    -ms-animation: glitter_2 4.5s linear 0s infinite normal;
+    -o-animation: glitter_2 4.5s linear 0s infinite normal;
+    animation-delay: 0.5s;
+}
+
+
+@-webkit-keyframes glitter {
+    0% {
+        -webkit-transform: scale(1);
+    }
+    25% {
+        -webkit-transform: scale(0.1);
+    }
+    50% {
+        -webkit-transform: scale(1);
+    }
+    75% {
+        -webkit-transform: scale(0.1);
+    }
+    100% {
+        -webkit-transform: scale(1);
+    }
+}
+@-webkit-keyframes glitter_2 {
+    0% {
+        -webkit-transform: scale(0.1);
+    }
+    25% {
+        -webkit-transform: scale(1);
+    }
+    50% {
+        -webkit-transform: scale(0.1);
+    }
+    75% {
+        -webkit-transform: scale(1);
+    }
+    100% {
+        -webkit-transform: scale(0.1);
+    }
+}
+
+
+
+
+
