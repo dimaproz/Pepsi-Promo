@@ -15,5 +15,12 @@ export default {
       )
     }
   },
+  mounted() {
+    const token = localStorage.getItem('access_token')
+    if (token) {
+      this.$store.dispatch('getUser')
+      this.$store.dispatch('getUserCodes')
+    }
+  },
 }
 </script>

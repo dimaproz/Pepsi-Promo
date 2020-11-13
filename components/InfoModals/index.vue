@@ -17,6 +17,11 @@
       :message="`Email <br /> вже <br />зареєстровано.`"
     />
     <error-modal
+      v-if="infoModal === 'glass_error'"
+      :message="`Вибачте, сталася помилка`"
+    />
+    <success-order-modal v-if="infoModal === 'glass_success'" />
+    <error-modal
       v-if="infoModal === 'phoneError'"
       :message="`Номер <br /> вже <br />зареєстровано.`"
     />
@@ -30,7 +35,7 @@
         Спробуйте ще раз.
       </p>
       <p class="mb-30">
-        Звертаємо увагу, що після 10 спроб <br />
+        Звертаємо увагу, що після 5 спроб <br />
         введення некоректного коду ваш номер <br />
         автоматично буде заблоковано для участі <br />
         в Акції на 24 години!
@@ -42,6 +47,9 @@
         Будь ласка, введіть коректний <br />
         акційний код.
       </p>
+    </error-code-modal>
+    <error-code-modal v-if="infoModal === 'code_not_found'" :autoclose="true">
+      <p class="uppercase">У вас немає доступних виграшних кодів</p>
     </error-code-modal>
     <error-code-modal v-if="infoModal === 'duplicate_my'">
       <p class="uppercase">
@@ -78,7 +86,7 @@
       </p>
 
       <p class="mb-30">
-        Звертаємо увагу, що після 10 спроб введення некоректного коду ваш номер
+        Звертаємо увагу, що після 5 спроб введення некоректного коду ваш номер
         автоматично буде заблоковано для участі<br />
         в Акції на 24 години!
       </p>
@@ -105,6 +113,7 @@ import ErrorCodeModal from '@/components/InfoModals/ErrorCodeModal'
 import PromoEnd from '@/components/InfoModals/PromoEnd'
 import PromoStart from '@/components/InfoModals/PromoStart'
 import FindCodeModal from '@/components/InfoModals/FindCodeModal'
+import SuccessOrderModal from '@/components/InfoModals/SuccessOrderModal'
 
 export default {
   components: {
@@ -114,6 +123,7 @@ export default {
     SuccessGlassModal,
     SuccessPhoneModal,
     SuccessCarModal,
+    SuccessOrderModal,
     SuccessPhoneChanceModal,
     SuccessDayLimitModal,
     RulesModal,

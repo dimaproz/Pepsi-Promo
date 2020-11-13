@@ -11,7 +11,6 @@
             :maxlength="11"
             class="key-input"
             oninput="javascript: if (this.value.length > 11) this.value = this.value.slice(0, 11);"
-            @keydown="keydownHandler($event)"
           />
           <button id="reg-code" type="submit" class="key-btn" />
         </form>
@@ -73,11 +72,6 @@ export default {
     ...mapActions({
       setInfoModal: 'setInfoModal',
     }),
-    keydownHandler(e) {
-      if (/^\W$/.test(e.key)) {
-        e.preventDefault()
-      }
-    },
     handleSubmit() {
       const code = this.form.code
       this.$store.dispatch('saveCode', code.toUpperCase())

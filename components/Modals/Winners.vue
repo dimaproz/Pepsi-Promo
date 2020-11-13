@@ -5,7 +5,7 @@
       <p class="modal-subtitle">Результати щотижневих розіграшів смартфону</p>
     </div>
     <div class="modal-body">
-      <div class="winners-list modal-list">
+      <div v-if="$store.state.winners" class="winners-list modal-list">
         <vuescroll :ops="ops">
           <p
             v-for="item in $store.state.winners"
@@ -16,6 +16,12 @@
             {{ item.name }}
           </p>
         </vuescroll>
+      </div>
+      <div v-else>
+        <p class="text-center">
+          Перший розіграш відбудеться <br />
+          23 листопада.
+        </p>
       </div>
     </div>
   </modal-layout>

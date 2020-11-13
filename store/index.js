@@ -25,7 +25,8 @@ const store = () =>
       sidebar: false,
       divanPromo: '',
       glassEmpty: false,
-      glassCode: '00T288E86KP',
+      glassCode: null,
+      glasses: [],
     },
     mutations: {
       FIELD_TOGGLED(state, payload) {
@@ -77,6 +78,9 @@ const store = () =>
       GLASS_CODE_SAVED(state, payload) {
         state.glassCode = payload
       },
+      GLASSES_SET(state, payload) {
+        state.glasses = payload
+      },
     },
     actions: {
       toggleSidebarState({ commit }) {
@@ -88,9 +92,9 @@ const store = () =>
       toggleCodeField({ commit }, payload) {
         commit('FIELD_TOGGLED', payload)
       },
-      setModal({ commit }, payload) {
+      setModal({ commit, state }, payload) {
         commit('MODAL_SET', payload)
-        if (payload === null) {
+        if (payload === null && state.modal) {
           commit('SET_GLASS_STATE', false)
           commit('SAVE_PROMO', '')
           history.pushState(null, null, '/')
@@ -199,7 +203,6 @@ const store = () =>
           .post(`${BASE_API_PATH}/user/registration`, payload)
           .then((res) => {
             dispatch('logIn', res.data)
-            dispatch('setModal', null)
           })
           .catch((err) => {
             if (!err.response) return
@@ -216,7 +219,6 @@ const store = () =>
           .post(`${BASE_API_PATH}/user/login`, payload)
           .then((res) => {
             dispatch('logIn', res.data)
-            dispatch('setModal', null)
           })
           .catch((err) => {
             if (!err.response) return
@@ -237,6 +239,57 @@ const store = () =>
             if (status === 403) {
               refreshTokenAction(dispatch, 'getUser')
             }
+          })
+      },
+      glassesForSelectRequest({ commit, dispatch, state }) {
+        axios
+          .get(
+            `${BASE_API_PATH}/user/glasses_for_select?usercode=${state.glassCode}`,
+            authToken()
+          )
+          .then((res) => {
+            commit('GLASSES_SET', res.data)
+          })
+          .catch((err) => {
+            if (!err.response) return
+            const status = err.response.status
+            if (status === 403) {
+              refreshTokenAction(dispatch, 'glassesForSelectRequest')
+            }
+            dispatch('setModal', null)
+            dispatch('setInfoModal', 'glass_error')
+          })
+      },
+      sendGlassForm({ commit, state, dispatch }, payload) {
+        axios
+          .post(
+            `${BASE_API_PATH}/user/select_glass`,
+            { ...payload, usercode: state.glassCode },
+            authToken()
+          )
+          .then((res) => {
+            dispatch('saveGlassCode', null)
+            dispatch('setModal', null)
+            dispatch('setInfoModal', 'glass_success')
+          })
+          .catch((err) => {
+            if (!err.response) return
+            const status = err.response.status
+            if (status === 403) {
+              refreshTokenRequest()
+                .then((res) => {
+                  localStorage.setItem('access_token', res.data)
+                  dispatch('sendGlassForm', payload)
+                })
+                .catch((err) => {
+                  if (!err.response) return
+                  const status = err.response.status
+                  if (status === 401) {
+                    dispatch('logOut')
+                  }
+                })
+            }
+            dispatch('setInfoModal', 'glass_error')
           })
       },
       getUserCodes({ commit, dispatch }) {
@@ -268,7 +321,15 @@ const store = () =>
       },
       logIn({ commit, state, dispatch }, payload) {
         commit('LOG_IN', payload.attributes)
+        commit('USER_CODES_SUCCESS', payload.codes)
         localStorage.setItem('user', JSON.stringify(payload.attributes))
+        if (localStorage.getItem('redirect')) {
+          dispatch('setModal', 'order')
+          localStorage.removeItem('redirect')
+        } else {
+          state.modal !== 'order' && dispatch('setModal', null)
+          localStorage.removeItem('redirect')
+        }
         if (payload.access_token && payload.refresh_token) {
           localStorage.setItem(
             'access_token',

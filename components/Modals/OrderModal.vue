@@ -124,74 +124,30 @@
           </div>
           <div class="glass-step__body">
             <div class="glass-select">
-              <div class="glass-select__item">
-                <p>Готовий до свят?</p>
+              <div
+                v-for="item in $store.state.glasses"
+                :key="item.glass_id"
+                class="glass-select__item"
+                :class="[parseInt(item.glass_count) === 0 ? 'inactive' : '']"
+              >
+                <p>{{ item.glass_name }}</p>
                 <div class="glass-select__image">
                   <img
-                    src="~assets/images/glass/glass-for-select/glass-1.png"
-                    alt="glass"
+                    :src="
+                      require(`~/assets/images/glass/glass-for-select/glass-${item.glass_id}.png`)
+                    "
+                    :alt="'glass' + item.glass_id"
                   />
                 </div>
                 <div class="checkbox-wrap">
                   <input
-                    id="glass-selected-1"
+                    :id="`glass-selected-${item.glass_id}`"
+                    :checked="item.selected"
                     type="radio"
                     name="glass"
-                    checked
+                    @change="handleRadio(item.glass_id)"
                   />
-                  <label for="glass-selected-1"></label>
-                </div>
-              </div>
-              <div class="glass-select__item">
-                <p>Ялинка готова?</p>
-                <div class="glass-select__image">
-                  <img
-                    src="~assets/images/glass/glass-for-select/glass-5.png"
-                    alt="glass"
-                  />
-                </div>
-                <div class="checkbox-wrap">
-                  <input id="glass-selected-2" type="radio" name="glass" />
-                  <label for="glass-selected-2"></label>
-                </div>
-              </div>
-              <div class="glass-select__item">
-                <p>Пограємо в сніжки?</p>
-                <div class="glass-select__image">
-                  <img
-                    src="~assets/images/glass/glass-for-select/glass-3.png"
-                    alt="glass"
-                  />
-                </div>
-                <div class="checkbox-wrap">
-                  <input id="glass-selected-3" type="radio" name="glass" />
-                  <label for="glass-selected-3"></label>
-                </div>
-              </div>
-              <div class="glass-select__item inactive">
-                <p>Гоу на двіж?</p>
-                <div class="glass-select__image">
-                  <img
-                    src="~assets/images/glass/glass-for-select/glass-4.png"
-                    alt="glass"
-                  />
-                </div>
-                <div class="checkbox-wrap">
-                  <input id="glass-selected-4" type="radio" name="glass" />
-                  <label for="glass-selected-4"></label>
-                </div>
-              </div>
-              <div class="glass-select__item">
-                <p>Катнемо на стилі?</p>
-                <div class="glass-select__image">
-                  <img
-                    src="~assets/images/glass/glass-for-select/glass-2.png"
-                    alt="glass"
-                  />
-                </div>
-                <div class="checkbox-wrap">
-                  <input id="glass-selected-5" type="radio" name="glass" />
-                  <label for="glass-selected-5"></label>
+                  <label :for="`glass-selected-${item.glass_id}`" />
                 </div>
               </div>
             </div>
@@ -230,7 +186,7 @@
       <button
         type="button"
         class="modal-btn light-btn skew-btn"
-        @click="$store.dispatch('setModal', 'login')"
+        @click="goToLogin"
       >
         <span> Вхід </span>
       </button>
@@ -254,41 +210,78 @@ export default {
     ModalLayout,
   },
   mixins: [validationMixin],
-  // data() {
-  //   return {
-  //     form: {
-  //       fullname: '',
-  //       phone: '',
-  //       email: '',
-  //       city: '',
-  //       np: '',
-  //     },
-  //   }
-  // },
+  data() {
+    return {
+      mask: null,
+      form: {
+        fullname: '',
+        phone: '',
+        email: '',
+        city: '',
+        np: '',
+        glass: '',
+      },
+    }
+  },
   computed: {
     user() {
       return this.$store.state.user
     },
-    form: {
-      get() {
-        return {
-          fullname: this.user.first_name,
-          phone: this.user.phone,
-          email: this.user.email,
-          city: '',
-          np: '',
-        }
-      },
-      set(newVal) {
-        console.log(newVal)
-      },
+    glasses() {
+      return this.$store.state.glasses
     },
+  },
+  watch: {
+    glasses(newVal) {
+      this.glass = newVal.find((item) => item.selected).glass_id
+      this.$v.form.glass.$model = newVal.find((item) => item.selected).glass_id
+    },
+    '$store.state.user'(newVal) {
+      if (newVal) {
+        const code = this.$store.state.userCodes.find(
+          (item) =>
+            parseInt(item.final_select) === 0 &&
+            (parseInt(item.type) === 4 || parseInt(item.type) === 24)
+        )
+        if (!code) {
+          this.$store.dispatch('setModal', null)
+          this.$store.dispatch('setInfoModal', 'code_not_found')
+          return
+        }
+        this.$store.dispatch('saveGlassCode', code.code)
+        this.$store.dispatch('glassesForSelectRequest')
+        this.$v.form.fullname.$model = this.user.first_name
+        this.$v.form.email.$model = this.user.email
+        this.$v.form.fullname.$touch()
+        this.$v.form.email.$touch()
+      }
+    },
+  },
+  mounted() {
+    if (this.user) {
+      const code = this.$store.state.userCodes.find(
+        (item) =>
+          parseInt(item.final_select) === 0 &&
+          (parseInt(item.type) === 4 || parseInt(item.type) === 24)
+      )
+      if (!code) {
+        this.$store.dispatch('setModal', null)
+        this.$store.dispatch('setInfoModal', 'code_not_found')
+        return
+      }
+      this.$store.dispatch('saveGlassCode', code.code)
+      this.$store.dispatch('glassesForSelectRequest')
+      this.$v.form.fullname.$model = this.user.first_name
+      this.$v.form.email.$model = this.user.email
+      this.$v.form.fullname.$touch()
+      this.$v.form.email.$touch()
+    }
   },
   methods: {
     handleSubmit() {
       this.$v.$touch()
       if (!this.$v.$invalid) {
-        console.log(this.form)
+        this.$store.dispatch('sendGlassForm', this.form)
       }
     },
     handleChange(e, name) {
@@ -304,6 +297,13 @@ export default {
         this.$v.form[name].$touch()
         return true
       }
+    },
+    handleRadio(idx) {
+      this.$v.form.glass.$model = idx
+    },
+    goToLogin() {
+      localStorage.setItem('redirect', 'order')
+      this.$store.dispatch('setModal', 'login')
     },
   },
   validations: {
@@ -328,6 +328,7 @@ export default {
         required,
         numeric,
       },
+      glass: {},
     },
   },
 }

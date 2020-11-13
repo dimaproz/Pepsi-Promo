@@ -67,11 +67,6 @@ export default {
     },
   },
   mounted() {
-    const token = localStorage.getItem('access_token')
-    if (token) {
-      this.$store.dispatch('getUser')
-    }
-
     const currentDate = new Date().getTime()
     const endDate = new Date('2021-01-15').getTime()
 

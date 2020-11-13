@@ -6,7 +6,7 @@
     <div class="modal-body">
       <p class="mb30">
         Ти береш участь у щотижневому розіграші
-        <span class="color-red">смартфон</span>. <br />
+        <span class="color-red">смартфона</span>. <br />
         Очікуй на результати розіграшу наступного понеділка!
       </p>
       <p class="font-light">

@@ -25,9 +25,14 @@
           <input
             id="password"
             v-model="$v.form.password.$model"
-            type="password"
+            :type="[showPassword ? 'text' : 'password']"
             name="password"
           />
+          <span
+            class="eye-icon"
+            :class="{ open: showPassword }"
+            @click="handleChangeInput"
+          ></span>
         </div>
         <button type="submit" class="modal-btn dark-btn">
           <span> Увійти </span>
@@ -61,6 +66,7 @@ export default {
     return {
       submited: false,
       loading: false,
+      showPassword: false,
       form: {
         phone: '',
         password: '',
@@ -73,6 +79,9 @@ export default {
       if (!this.$v.$invalid) {
         this.$store.dispatch('logInRequest', this.form)
       }
+    },
+    handleChangeInput() {
+      this.showPassword = !this.showPassword
     },
   },
   validations: {

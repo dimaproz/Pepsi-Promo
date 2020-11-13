@@ -25,25 +25,19 @@
                 <span>Колекційна склянка.</span>
               </div>
               <button
+                v-if="parseInt(item.final_select) === 0"
                 type="button"
                 class="modal-btn light-btn small-btn"
                 @click.prevent="goToOrder(item.code)"
               >
                 <span> ЗАМОВИТИ </span>
               </button>
+              <span
+                v-if="parseInt(item.final_select) === 1"
+                class="color-light-blue codes-list__item_status"
+                >{{ presentTitle[item.selected_glass] }}
+              </span>
             </div>
-            <!--            <div class="codes-list__item">-->
-            <!--              <div class="codes-list__item_main-info">-->
-            <!--                <span>Акционный код</span>-->
-            <!--                - -->
-            <!--                <span>25. 12. 20</span>-->
-            <!--                - -->
-            <!--                <span>Колекційна склянка.</span>-->
-            <!--              </div>-->
-            <!--              <span class="color-light-blue codes-list__item_status"-->
-            <!--                >ЗАМОВЛЕНО СКЛЯНКУ «Пограємо в сніжки?»-->
-            <!--              </span>-->
-            <!--            </div>-->
           </div>
           <div class="codes-list_type codes-list_type-divan">
             <div
@@ -96,7 +90,7 @@
 
 <script>
 import vuescroll from 'vuescroll'
-import { scrollOptions } from '@/helpers/constants'
+import { scrollOptions, presentTitle } from '@/helpers/constants'
 import { dateParser } from '@/helpers/helpers'
 import ModalLayout from '@/components/Common/ModalLayout'
 
@@ -120,6 +114,7 @@ export default {
   },
   data() {
     return {
+      presentTitle,
       ops: { ...scrollOptions },
     }
   },

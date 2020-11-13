@@ -89,7 +89,7 @@ export default {
     minifyJS: true,
   },
   router: {
-    trailingSlash: false,
+    trailingSlashes: false,
     extendRoutes(routes, resolve) {
       routes.push({
         path: '/rules',
